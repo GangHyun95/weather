@@ -3,18 +3,34 @@ import styles from "./CurrentWeather.module.css";
 import Card from "../Card/Card";
 import { getDate } from "../../util";
 import { IoCalendarClearOutline, IoLocationOutline } from "react-icons/io5";
+import { useQuery } from "@tanstack/react-query";
+import WeatherApi from "../../api/weatherApi";
+import { useRecoilState } from "recoil";
+import { locationState } from "../../recoil/atoms/locationState";
+import { ICurrentWeather } from "../../types";
 export default function CurrentWeather({
     currentWeather,
 }: {
-    currentWeather: any;
+    currentWeather: ICurrentWeather;
 }) {
-    console.log(currentWeather);
+    const [location] = useRecoilState(locationState);
+
+    const { data: city } = useQuery({
+        queryKey: ["city", location.lat, location.lon],
+        queryFn: () => WeatherApi.getReverseGeo(location.lat, location.lon),
+        staleTime: 60000,
+        gcTime: 1000 * 60 * 10,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+    });
+
     const {
         weather,
         dt: dataUnix,
         sys: { country },
         timezone,
-        name,
+        main: { temp },
     } = currentWeather;
 
     const [{ icon, description }] = weather;
@@ -25,7 +41,7 @@ export default function CurrentWeather({
                 <h2 className={styles.title}>현재</h2>
                 <div className={styles.wrapper}>
                     <p className={styles.heading}>
-                        {`${parseInt("24.6", 10)}°`}<sup>c</sup>
+                        {`${Math.round(temp)}°`}<sup>c</sup>
                     </p>
                     <img
                         src={iconUrl}
@@ -49,7 +65,7 @@ export default function CurrentWeather({
                         <span className={styles.icon}>
                             <IoLocationOutline />
                         </span>
-                        <p className={styles.text}>{name}, {country}</p>
+                        <p className={styles.text}>{city}, {country}</p>
                     </li>
                 </ul>
             </Card>

@@ -14,6 +14,5 @@ export default function Card({
     };
 
     const className = sizeClassMap[size] || "";
-    console.log(className);
     return <div className={`${styles.card} ${styles[className]}`}>{children}</div>;
 }

@@ -29,6 +29,19 @@ const WeatherApi = {
         });
         return response.data;
     },
+
+    async getReverseGeo(lat: number, lon: number) {
+        const response = await axios.get("https://api.openweathermap.org/geo/1.0/reverse", {
+            params: {
+                lat: lat,
+                lon: lon,
+                limit: 5,
+                lang: "kr",
+                appid: process.env.REACT_APP_WEATHER_API_KEY,
+            },
+        });
+        return response.data[0].local_names['ko'];
+    },
 };
 
 export default WeatherApi;

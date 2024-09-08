@@ -8,6 +8,7 @@ import WeatherApi from "../../api/weatherApi";
 
 export default function MainContent() {
     const [location, setLocation] = useRecoilState(locationState);
+
     const {
         data: currentWeather,
         isLoading,
@@ -26,7 +27,6 @@ export default function MainContent() {
         return <p>Loading...</p>;
     }
 
-    console.log(currentWeather);
     return (
         currentWeather && (
             <main>

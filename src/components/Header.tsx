@@ -2,31 +2,58 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";
 import { TbCurrentLocation } from "react-icons/tb";
 import styles from "./Header.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { locationState } from "../recoil/atoms/locationState";
+import { useQuery } from "@tanstack/react-query";
+import WeatherApi from "../api/weatherApi";
 
 export default function Header() {
+    const [location, setLocation] = useRecoilState(locationState);
     const [text, setText] = useState("");
-    
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    };
 
-    const handleLocationClick = () => {
+    // const { isLoading, error, data } = useQuery({
+    //     queryKey: ["weather", location.lat, location.lon],
+    //     queryFn: () => WeatherApi.getWeatherByCoordinates(location.lat, location.lon),
+    //     staleTime: 60000,
+    //     gcTime: 1000 * 60 * 10,
+    //     refetchOnWindowFocus: false,
+    //     refetchOnMount: false,
+    //     refetchOnReconnect: false,
+    // })
+
+    const getLocation = (showAlert = false) => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    console.log(position);
                     const { latitude, longitude } = position.coords;
-                    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                    setLocation({ lat: latitude, lon: longitude });
                 },
                 (error) => {
-                    console.error("위치 정보를 가져오는 데 실패했습니다.", error);
+                    if (error.code === error.PERMISSION_DENIED && showAlert) {
+                        alert("위치 정보 접근이 차단되었습니다. 브라우저 설정을 확인해주세요.");
+                    } else {
+                        console.error("위치 정보를 가져오는 데 실패했습니다.", error);
+                    }
                 }
             );
         } else {
             console.error("이 브라우저는 Geolocation을 지원하지 않습니다.");
         }
     };
+
+    useEffect(() => {
+        getLocation(false);
+    }, []);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    };
+
+    const handleLocationClick = () => {
+        getLocation(true);
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>

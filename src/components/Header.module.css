@@ -1,0 +1,74 @@
+.icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.header {
+    position: relative;
+    height: 120px;
+    z-index: 4;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "DNFBitBitv2", sans-serif;
+}
+
+.logo svg {
+    font-size: 3rem;
+    margin-bottom: 6px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+}
+
+.form {
+    position: relative;
+    width: 500px;
+    background-color: var(--surface);
+    border-radius: var(--radius-28);
+}
+
+.input {
+    height: 56px;
+    padding-inline: 56px 16px;
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--on-surface-variant);
+}
+
+.form .icon {
+    position: absolute;
+    top: 50%;
+    left: 28px;
+    transform: translate(-50%, -50%);
+}
+
+.primary {
+    display: flex;
+    align-items: center;
+    padding-inline: 16px 24px;
+    height: 48px;
+    gap: 16px;
+    border-radius: 28px;
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+.span {
+    font-weight: var(--weight-semiBold);
+}

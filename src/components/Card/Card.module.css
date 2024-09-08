@@ -1,0 +1,9 @@
+.card {
+    background-color: var(--surface);
+    color: var(--on-surface);
+}
+
+.card-lg {
+    padding: 36px;
+    border-radius: var(--radius-28);
+}

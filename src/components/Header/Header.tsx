@@ -4,23 +4,11 @@ import { TbCurrentLocation } from "react-icons/tb";
 import styles from "./Header.module.css";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { locationState } from "../recoil/atoms/locationState";
-import { useQuery } from "@tanstack/react-query";
-import WeatherApi from "../api/weatherApi";
+import { locationState } from "../../recoil/atoms/locationState";
 
 export default function Header() {
     const [location, setLocation] = useRecoilState(locationState);
     const [text, setText] = useState("");
-
-    // const { isLoading, error, data } = useQuery({
-    //     queryKey: ["weather", location.lat, location.lon],
-    //     queryFn: () => WeatherApi.getWeatherByCoordinates(location.lat, location.lon),
-    //     staleTime: 60000,
-    //     gcTime: 1000 * 60 * 10,
-    //     refetchOnWindowFocus: false,
-    //     refetchOnMount: false,
-    //     refetchOnReconnect: false,
-    // })
 
     const getLocation = (showAlert = false) => {
         if (navigator.geolocation) {
@@ -80,7 +68,7 @@ export default function Header() {
                         <span className={styles.icon}>
                             <TbCurrentLocation />
                         </span>
-                        <span className={styles.span}>Current Location</span>
+                        <span className={styles.span}>내 위치 찾기</span>
                     </button>
                 </div>
             </div>

@@ -17,6 +17,7 @@
     /* font-size */
     --heading: 5rem;
     --title-1: 1.25rem;
+    --label: 0.875rem;
     --weight-semiBold: 600;
 }
 
@@ -62,10 +63,6 @@ span,
 input,
 button {
     display: block;
-}
-
-html {
-    font-family: var(--ff-nunito-sans);
 }
 
 @font-face {

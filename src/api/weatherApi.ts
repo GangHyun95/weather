@@ -30,6 +30,16 @@ const WeatherApi = {
         return response.data;
     },
 
+    async getAirPollution(lat: number, lon: number) {
+        const response = await this.httpClient.get("air_pollution", {
+            params: {
+                lat: lat,
+                lon: lon,
+            }
+        });
+        return response.data;
+    },
+
     async getReverseGeo(lat: number, lon: number) {
         const response = await axios.get("https://api.openweathermap.org/geo/1.0/reverse", {
             params: {

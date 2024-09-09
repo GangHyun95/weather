@@ -1,0 +1,83 @@
+.section {
+    margin-block: 20px;
+}
+
+.title {
+    font-size: var(--title-3);
+    margin-bottom: 12px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.highlight-card {
+    background-color: var(--black-opacity-10);
+}
+
+.highlight-card:nth-child(-n + 2) {
+    grid-column: span 2;
+    height: 200px;
+}
+
+.highlight-card:nth-child(n + 3) {
+    height: 150px;
+}
+
+.heading {
+    color: var(--on-surface-variant-2);
+    margin-bottom: 20px;
+    font-weight: var(--weight-semiBold);
+    font-size: var(--title-3);
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    row-gap: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.highlight-card .title {
+    font-size: var(--title-2);
+    margin-bottom: 0;
+}
+
+.label {
+    font-size: var(--label);
+    color: var(--on-surface-variant-2);
+    margin-bottom: 4px;
+}
+
+.highlight-card.one .item {
+    width: 25%;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.highlight-card.two .item {
+    justify-content: flex-start;
+    gap: 8px 24px;
+}
+
+.icon {
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+}

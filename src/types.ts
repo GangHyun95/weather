@@ -9,14 +9,34 @@ export interface ICurrentWeather {
     dt_txt: string;
     sys: {
         country: string;
+        sunrise: number;
+        sunset: number;
     };
+    visibility: number;
     timezone: number;
     main: {
         temp: number;
         temp_max: number;
+        humidity: number;
+        pressure: number; 
+        sea_level: number; 
+        feels_like: number;
     };
 }
 
 export interface IForeCast {
     list: ICurrentWeather[];
+}
+export interface IAirPollution {
+    list: {
+        main: {
+            aqi: number;
+        };
+        components: {
+            pm2_5: number;
+            so2: number;
+            no2: number;
+            o3: number;
+        };
+    }[];
 }

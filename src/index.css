@@ -10,13 +10,18 @@
     --on-surface-variant-2: #7B7980;
     --white: #fff;
     --outline: #3E3D40;
+    --black-opacity-10: rgba(0, 0, 0, 0.1);
 
     /* radius */
     --radius-28: 28px;
+    --radius-16: 16px;
 
     /* font-size */
     --heading: 5rem;
-    --title-1: 1.25rem;
+    --title-1: 2.25rem;
+    --title-2: 1.75rem;
+    --title-3: 1.25rem;
+    --title-4: 1rem;
     --label: 0.875rem;
     --weight-semiBold: 600;
 }
@@ -56,6 +61,8 @@ button {
 sup { vertical-align: top; }
 
 sub, sup { font-size: 0.75em; }
+
+sub { vertical-align: baseline; }
 
 a,
 img,

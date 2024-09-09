@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { locationState } from "../../recoil/atoms/locationState";
 import WeatherApi from "../../api/weatherApi";
 import Forecast from "../Forecast/Forecast";
+import Highlights from "../Highlights/Highlights";
 
 export default function MainContent() {
     const [location] = useRecoilState(locationState);
@@ -51,14 +52,28 @@ export default function MainContent() {
                 refetchOnReconnect: false,
                 enabled: !!location.lat && !!location.lon,
             },
+            {
+                queryKey: ["air_pollution", location.lat, location.lon],
+                queryFn: () => 
+                    location.lat && location.lon
+                        ? WeatherApi.getAirPollution(location.lat, location.lon)
+                        : Promise.reject(new Error("위치 정보 없음")),
+                    staleTime: 60000,
+                    gcTime: 1000 * 60 * 10,
+                    refetchOnWindowFocus: false,
+                    refetchOnMount: false,
+                    refetchOnReconnect: false,
+                    enabled: !!location.lat && !!location.lon,
+                
+            }
         ],
     });
 
-    const [{ data: currentWeather }, { data: forecastData }, { data: city }] = results;
+    const [{ data: currentWeather }, { data: forecastData }, { data: city }, {data: airPollution}] = results;
 
-    const isLoading = results[0].isLoading || results[1].isLoading || results[2].isLoading;
+    const isLoading = results[0].isLoading || results[1].isLoading || results[2].isLoading || results[3].isLoading;
 
-    if (isLoading || !currentWeather || !forecastData || !city) {
+    if (isLoading || !currentWeather || !forecastData || !city || !airPollution) {
         return <p>Loading...</p>;
     }
 
@@ -69,7 +84,9 @@ export default function MainContent() {
                     <CurrentWeather currentWeather={currentWeather} city={city} />
                     <Forecast forecastData={forecastData} />
                 </div>
-                <div className={styles.right}>right</div>
+                <div className={styles.right}>
+                    <Highlights airPollution={airPollution} currentWeather={currentWeather}/>
+                </div>
             </article>
         </main>
     );

@@ -1,12 +1,4 @@
-export const weekDayNames = [
-    "일",
-    "월",
-    "화",
-    "수",
-    "목",
-    "금",
-    "토",
-];
+export const weekDayNames = ["일", "월", "화", "수", "목", "금", "토"];
 
 export const monthNames = [
     "1월",
@@ -28,4 +20,13 @@ export const getDate = function (dateUnix: number, timezone: number): string {
     const weekDayName = weekDayNames[date.getUTCDay()];
     const monthName = monthNames[date.getUTCMonth()];
     return `${monthName} ${date.getUTCDate()}일 ${weekDayName}요일`;
+};
+
+export const getTime = function (timeUnix: number, timezone: number): string {
+    const date = new Date((timeUnix + timezone) * 1000);
+    const hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
+    const period = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    return `${formattedHours}:${minutes} ${period}`;
 };

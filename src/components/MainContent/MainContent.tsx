@@ -7,6 +7,7 @@ import { locationState } from "../../recoil/atoms/locationState";
 import WeatherApi from "../../api/weatherApi";
 import Forecast from "../Forecast/Forecast";
 import Highlights from "../Highlights/Highlights";
+import HourlyForecast from "../HourlyForecast/HourlyForecast";
 
 export default function MainContent() {
     const [location] = useRecoilState(locationState);
@@ -86,6 +87,7 @@ export default function MainContent() {
                 </div>
                 <div className={styles.right}>
                     <Highlights airPollution={airPollution} currentWeather={currentWeather}/>
+                    <HourlyForecast forecastData={forecastData}/>
                 </div>
             </article>
         </main>

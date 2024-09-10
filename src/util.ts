@@ -30,3 +30,11 @@ export const getTime = function (timeUnix: number, timezone: number): string {
     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
     return `${formattedHours}:${minutes} ${period}`;
 };
+
+export const getHours = (timeUnix: number, timezone: number) => {
+    const date = new Date((timeUnix + timezone) * 1000);
+    const hours = date.getUTCHours();
+    const period = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    return `${formattedHours} ${period}`;
+};

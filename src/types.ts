@@ -22,10 +22,18 @@ export interface ICurrentWeather {
         sea_level: number; 
         feels_like: number;
     };
+    wind: {
+        speed: number;
+        deg: number;
+        gust: number;
+    }
 }
 
 export interface IForeCast {
     list: ICurrentWeather[];
+    city: {
+        timezone: number;
+    }
 }
 export interface IAirPollution {
     list: {

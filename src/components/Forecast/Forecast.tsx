@@ -15,17 +15,17 @@ export default function Forecast({
             <h2 className={styles.title}>날씨예보</h2>
             <Card size="large">
                 <ul className={styles.list}>
-                    {filteredData.map((forecast, index) => {
+                    {filteredData.map((forecast) => {
                         const {
                             main: { temp_max },
                             weather,
+                            dt,
                             dt_txt,
                         } = forecast;
                         const [{ icon, description }] = weather;
                         const date = new Date(dt_txt);
-
                         return (
-                            <li key={index} className={styles.item}>
+                            <li key={dt} className={styles.item}>
                                 <div className={styles.wrapper}>
                                     <img
                                         src={`http://openweathermap.org/img/wn/${icon}.png`}

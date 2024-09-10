@@ -27,7 +27,13 @@ export default function Highlights({airPollution, currentWeather}: HighlightsPro
         timezone,
     } = currentWeather;
 
-    console.log(pm2_5,so2, no2, o3 );
+    const aqiText: { [key: number]: string } = {
+        1: "좋음",
+        2: "양호",
+        3: "보통",
+        4: "나쁨",
+        5: "매우 나쁨",
+    };
     return (
         <section className={styles.section}>
             <Card size="large">
@@ -61,6 +67,7 @@ export default function Highlights({airPollution, currentWeather}: HighlightsPro
                                 </li>
                             </ul>
                         </div>
+                        <span className={`${styles.badge} ${styles["aqi-" + aqi]}`}>{aqiText[aqi]}</span>
                     </Card>
                     <Card size="small" className={`${styles["highlight-card"]} ${styles["two"]}`}>
                         <h3 className={styles.heading}>일출 & 일몰</h3>

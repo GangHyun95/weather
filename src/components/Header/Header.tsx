@@ -34,10 +34,8 @@ export default function Header() {
     };
 
     useEffect(() => {
-        if (!location.lat || !location.lon) {
-            getLocation(false);
-        }
-    }, [location]);
+        getLocation(false);
+    }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

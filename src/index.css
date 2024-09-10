@@ -11,10 +11,17 @@
     --white: #fff;
     --outline: #3E3D40;
     --black-opacity-10: rgba(0, 0, 0, 0.1);
+    --bg-aqi-1: #89E589;
+    --bg-aqi-2: #E5DD89;
+    --bg-aqi-3: #E5C089;
+    --bg-aqi-4: #E58989;
+    --bg-aqi-5: #E589B7;
+    --on-bg-aqi: #1F331F;
 
     /* radius */
     --radius-28: 28px;
     --radius-16: 16px;
+    --radius-pill: 500px;
 
     /* font-size */
     --heading: 5rem;

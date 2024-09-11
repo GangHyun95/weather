@@ -10,7 +10,6 @@ export default function HourlyForecast({forecastData} : {forecastData: IForeCast
         city: { timezone },
     } = forecastData;
 
-    console.log(filteredData);
     return (
         <section className={styles.section}>
             <h2 className={styles.title}>시간대별 날씨</h2>

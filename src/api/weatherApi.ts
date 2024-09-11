@@ -50,8 +50,20 @@ const WeatherApi = {
                 appid: process.env.REACT_APP_WEATHER_API_KEY,
             },
         });
-        return response.data[0].local_names['ko'];
+        
+        return response.data[0].local_names?.['ko'] || response.data[0].name;
     },
+
+    async getCityCoords(query: string) {
+        const response = await axios.get("https://api.openweathermap.org/geo/1.0/direct", {
+            params: {
+                q: query,
+                limit: 5,
+                appid: process.env.REACT_APP_WEATHER_API_KEY,
+            },
+        });
+        return response.data;
+    }
 };
 
 export default WeatherApi;

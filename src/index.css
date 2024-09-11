@@ -22,6 +22,7 @@
     --radius-28: 28px;
     --radius-16: 16px;
     --radius-pill: 500px;
+    --radius-circle: 50%;
 
     /* font-size */
     --heading: 5rem;
@@ -33,7 +34,9 @@
     --weight-semiBold: 600;
 }
 
-* {
+*,
+*::before,
+*::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;

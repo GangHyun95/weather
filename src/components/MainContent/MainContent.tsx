@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./MainContent.module.css";
 import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import { useQueries } from "@tanstack/react-query";

@@ -31,8 +31,8 @@ export default function CurrentWeather({
                     </p>
                     <img
                         src={iconUrl}
-                        width="64"
-                        height="64"
+                        width="80"
+                        height="80"
                         alt="clouds"
                         className={styles.img}
                     />

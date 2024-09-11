@@ -45,6 +45,7 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
+    flex-wrap: wrap;
     row-gap: 8px;
 }
 
@@ -92,6 +93,7 @@
     font-weight: var(--weight-semiBold);
     cursor: help;
     color: var(--on-bg-aqi);
+    font-size: var(--title-4);
 }
 
 .badge.aqi-1 {
@@ -112,4 +114,35 @@
 
 .badge.aqi-5 {
     background-color: var(--bg-aqi-5);
+}
+
+@media screen and (max-width: 1400px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .icon {
+        font-size: 36px;
+    }
+
+    .highlight-card:nth-child(-n + 2) {
+        height: 160px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        margin-block: 0px 16px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .highlight-card {
+        grid-column: span 1 !important; /* 모든 카드 한 열 */
+        height: auto !important; /* 높이 자동 */
+    }
 }

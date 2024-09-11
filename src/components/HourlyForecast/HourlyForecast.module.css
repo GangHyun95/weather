@@ -7,9 +7,23 @@
     margin-bottom: 16px;
 }
 
+.container {
+    margin-inline: 0 -24px;
+    overflow-x: auto;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
 .list {
     display: flex;
     gap: 16px;
+}
+
+.list::after {
+    content: "";
+    min-width: 12px;
 }
 
 .list:first-child {
@@ -28,4 +42,10 @@
 .forecast-card {
     text-align: center;
     justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-inline: 0 -16px;
+    }
 }

@@ -17,15 +17,14 @@ export interface ICurrentWeather {
     main: {
         temp: number;
         temp_max: number;
+        temp_min:number;
         humidity: number;
         pressure: number; 
-        sea_level: number; 
         feels_like: number;
     };
     wind: {
         speed: number;
         deg: number;
-        gust: number;
     }
 }
 

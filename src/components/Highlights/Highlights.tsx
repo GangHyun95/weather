@@ -21,7 +21,7 @@ export default function Highlights({airPollution, currentWeather}: HighlightsPro
     } = airPollution.list[0];
 
     const {
-        main: { humidity, pressure, sea_level, feels_like },
+        main: { humidity, pressure, feels_like },
         sys: { sunrise, sunset },
         visibility,
         timezone,

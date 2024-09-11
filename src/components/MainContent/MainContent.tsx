@@ -7,6 +7,7 @@ import WeatherApi from "../../api/weatherApi";
 import Forecast from "../Forecast/Forecast";
 import Highlights from "../Highlights/Highlights";
 import HourlyForecast from "../HourlyForecast/HourlyForecast";
+import Loading from "../Loading/Loading";
 
 export default function MainContent() {
     const [location] = useRecoilState(locationState);
@@ -74,7 +75,7 @@ export default function MainContent() {
     const isLoading = results[0].isLoading || results[1].isLoading || results[2].isLoading || results[3].isLoading;
 
     if (isLoading || !currentWeather || !forecastData || !city || !airPollution) {
-        return <p>Loading...</p>;
+        return <Loading />
     }
 
     return (

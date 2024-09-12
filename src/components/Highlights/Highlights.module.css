@@ -142,7 +142,23 @@
     }
 
     .highlight-card {
-        grid-column: span 1 !important; /* 모든 카드 한 열 */
-        height: auto !important; /* 높이 자동 */
+        grid-column: span 1 !important;
+        height: auto !important;
+    }
+
+    .highlight-card.one .wrapper {
+        gap: 8px;
+    }
+
+    .highlight-card.one .item {
+        width: 50%;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 4px;
+    }
+
+    .highlight-card.one .label {
+        --label: 0.75rem;
+        margin-bottom: 0;
     }
 }

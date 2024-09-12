@@ -11,6 +11,9 @@
     --white: #fff;
     --outline: #3E3D40;
     --black-opacity-10: rgba(0, 0, 0, 0.1);
+    --white-opacity-4: rgba(255, 255, 255, 0.04);
+    --white-opacity-8: rgba(255, 255, 255, 0.08);
+    --white-opacity-12: rgba(255, 255, 255, 0.12);
     --bg-aqi-1: #89E589;
     --bg-aqi-2: #E5DD89;
     --bg-aqi-3: #E5C089;
@@ -26,6 +29,8 @@
 
     /* font-size */
     --heading: 5rem;
+    --logo: 3rem;
+    --logo-text: 1.5rem;
     --title-1: 2.25rem;
     --title-2: 1.75rem;
     --title-3: 1.25rem;
@@ -132,5 +137,15 @@ code {
         --title-2: 1.5rem;
         --title-3: 1.125rem;
         --title-4: 0.75rem;
+        --logo: 2.25rem;
+        --logo-text: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --title-2: 1.25rem;
+        --title-3: 1rem;
+        --title-4: 0.875rem;
     }
 }

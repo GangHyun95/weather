@@ -1,5 +1,5 @@
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch,IoMdArrowBack } from "react-icons/io";
 import { TbCurrentLocation } from "react-icons/tb";
 import styles from "./Header.module.css";
 import { useState, useEffect } from "react";
@@ -28,6 +28,7 @@ export default function Header() {
     const defaultLocation = { lat: 37.5145, lon: 127.0495 };
     const [debouncedText, setDebouncedText] = useState(text);
     const [isLoading, setIsLoading] = useState(false);
+    const [isSearchVisible, setIsSearchVisible] = useState(false);
 
     const { mutate: searchCities } = useMutation({
         mutationFn: async (query: string) => {
@@ -110,10 +111,9 @@ export default function Header() {
 
     const handleResultClick = (lat: number, lon: number) => {
         setLocation({ lat: lat, lon: lon });
-        setText('');
         setIsExpanded(false);
+        setIsSearchVisible(false);
     };
-
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -122,10 +122,10 @@ export default function Header() {
                     <span>weather</span>
                 </button>
                 <form
-                    className={`${styles.form} ${isLoading ? styles.searching : ""} ${(isFocused && isExpanded) ? styles.expanded : ''}`}
+                    className={`${styles.form} ${isLoading ? styles.searching : ""} ${(isFocused && isExpanded) ? styles.expanded : ''} ${isSearchVisible ? styles.active : ""}`}
                     onSubmit={handleSubmit}
                 >
-                    <div>
+                    <div className={styles.wrapper}>
                         <input
                             className={styles.input}
                             type="search"
@@ -139,6 +139,9 @@ export default function Header() {
                         />
                         <button className={`${styles["search-icon"]} ${styles.icon}`}>
                             <IoIosSearch />
+                        </button>
+                        <button className={styles.back} onClick={() => setIsSearchVisible(false)}>
+                            <IoMdArrowBack />
                         </button>
                     </div>
                     <div className={`${styles.result} ${isFocused && isExpanded ? styles.active : ""}`}>
@@ -162,6 +165,9 @@ export default function Header() {
                     </div>
                 </form>
                 <div className={styles.right}>
+                    <button className={`${styles["m-search"]} ${styles.icon}`} onClick={() => setIsSearchVisible(true)}>
+                        <IoIosSearch />
+                    </button>
                     <button className={styles.primary} onClick={handleLocationClick}>
                         <span className={styles.icon}>
                             <TbCurrentLocation />

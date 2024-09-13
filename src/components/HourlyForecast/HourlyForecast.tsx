@@ -6,9 +6,6 @@ import { getHours } from '../../util';
 import directionImg from '../../assets/images/direction.png'
 export default function HourlyForecast({forecastData} : {forecastData: IForeCast}) {
     const filteredData = forecastData.list.filter((_, index) => index < 8);
-    const {
-        city: { timezone },
-    } = forecastData;
 
     return (
         <section className={styles.section}>
@@ -26,7 +23,7 @@ export default function HourlyForecast({forecastData} : {forecastData: IForeCast
                         return (
                             <li key={dt} className={styles.item}>
                                 <Card size="small" className={styles["forecast-card"]}>
-                                    <p className={styles.text}>{getHours(dt, timezone)}</p>
+                                    <p className={styles.text}>{getHours(dt)}</p>
                                     <img
                                         src={iconUrl}
                                         width="48"
@@ -52,7 +49,7 @@ export default function HourlyForecast({forecastData} : {forecastData: IForeCast
                         return (
                             <li key={dt} className={styles.item}>
                                 <Card size="small" className={styles["forecast-card"]}>
-                                    <p className={styles.text}>{getHours(dt, timezone)}</p>
+                                    <p className={styles.text}>{getHours(dt)}</p>
                                     <img
                                         src={directionImg}
                                         width="48"

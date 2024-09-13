@@ -24,7 +24,6 @@ export default function Highlights({airPollution, currentWeather}: HighlightsPro
         main: { humidity, pressure, feels_like },
         sys: { sunrise, sunset },
         visibility,
-        timezone,
     } = currentWeather;
 
     const aqiText: { [key: number]: string } = {
@@ -78,7 +77,7 @@ export default function Highlights({airPollution, currentWeather}: HighlightsPro
                                 </span>
                                 <div>
                                     <p className={styles.label}>일출</p>
-                                    <p className={styles.title}>{getTime(sunrise, timezone)}</p>
+                                    <p className={styles.title}>{getTime(sunrise)}</p>
                                 </div>
                             </div>
                             <div className={styles.item}>
@@ -87,7 +86,7 @@ export default function Highlights({airPollution, currentWeather}: HighlightsPro
                                 </span>
                                 <div>
                                     <p className={styles.label}>일몰</p>
-                                    <p className={styles.title}>{getTime(sunset, timezone)}</p>
+                                    <p className={styles.title}>{getTime(sunset)}</p>
                                 </div>
                             </div>
                         </div>

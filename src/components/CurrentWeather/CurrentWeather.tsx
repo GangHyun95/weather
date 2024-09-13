@@ -16,7 +16,6 @@ export default function CurrentWeather({
         weather,
         dt: dataUnix,
         sys: { country },
-        timezone,
         main: { temp },
     } = currentWeather;
 
@@ -46,7 +45,7 @@ export default function CurrentWeather({
                             <IoCalendarClearOutline />
                         </span>
                         <p className={styles.text}>
-                            {getDate(dataUnix, timezone)}
+                            {getDate(dataUnix)}
                         </p>
                     </li>
                     <li className={styles.item}>

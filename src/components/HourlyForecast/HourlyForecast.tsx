@@ -21,13 +21,14 @@ export default function HourlyForecast({forecastData} : {forecastData: IForeCast
                             main: { temp },
                             weather,
                         } = forecast;
-                        const [{ icon, description }] = weather
+                        const [{ icon, description }] = weather;
+                        const iconUrl = require(`../../assets/images/${icon}.png`);
                         return (
                             <li key={dt} className={styles.item}>
                                 <Card size="small" className={styles["forecast-card"]}>
                                     <p className={styles.text}>{getHours(dt, timezone)}</p>
                                     <img
-                                        src={`http://openweathermap.org/img/wn/${icon}.png`}
+                                        src={iconUrl}
                                         width="48"
                                         height="48"
                                         alt={description}

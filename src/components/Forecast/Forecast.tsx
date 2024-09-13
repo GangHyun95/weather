@@ -48,11 +48,12 @@ export default function Forecast({
                         const { temp_max, temp_min, weather, date } = forecast;
                         const { icon, description } = weather;
                         const forecastDate = new Date(date);
+                        const iconUrl = require(`../../assets/images/${icon}.png`);
                         return (
                             <li key={date} className={styles.item}>
                                 <div className={styles.wrapper}>
                                     <img
-                                        src={`http://openweathermap.org/img/wn/${icon}.png`}
+                                        src={iconUrl}
                                         width="36"
                                         height="36"
                                         alt={description}

@@ -4,6 +4,7 @@ import Card from "../Card/Card";
 import { getDate } from "../../util";
 import { IoCalendarClearOutline, IoLocationOutline } from "react-icons/io5";
 import { ICurrentWeather } from "../../types";
+
 export default function CurrentWeather({
     currentWeather,
     city,
@@ -20,7 +21,8 @@ export default function CurrentWeather({
     } = currentWeather;
 
     const [{ icon, description }] = weather;
-    const iconUrl = `http://openweathermap.org/img/wn/${icon}.png`;
+    const iconUrl = require(`../../assets/images/${icon}.png`);
+
     return (
         <section className={styles.section}>
             <Card size="large">

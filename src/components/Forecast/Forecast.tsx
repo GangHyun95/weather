@@ -17,10 +17,17 @@ export default function Forecast({
         weather: { icon: string; description: string };
     }> = [];
 
-    const today = new Date().toISOString().split("T")[0];
+    const { city: { timezone }} = forecastData;
+
+    const now = new Date();
+    const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split("T")[0];
 
     forecastData.list.forEach((forecast) => {
-        const date = forecast.dt_txt.split(" ")[0];
+        const { dt } = forecast;
+        
+        const newDate = new Date((dt + timezone) * 1000);
+
+        const date = newDate.toISOString().split("T")[0];
 
         if (date === today) return;
 

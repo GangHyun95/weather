@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+## 시연 페이지
+[Live Demo](https://weather-kappa-gules.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 소개
+<p>
+    React, TypeScript 학습과 API 연동을 익히기 위해 OpenWeatherMap API를 사용하여 현재 위치의 날씨와 5일간의 날씨 예보를 제공하는 반응형 웹사이트를 구현했습니다.
+</p>
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## 기술 스택
 
-### `yarn start`
+| JavaScript | TypeScript |  React   |
+| :--------: | :--------: | :------: |
+|   ![js]    |   ![ts]    | ![react] |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 주요 기능
 
-### `yarn test`
+### 기능 1
+<p>React Query를 이용해 반복적인 데이터 요청을 방지하고, 데이터를 효율적으로 캐싱하여 관리했습니다.</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 기능 2
+<p>Web API의 Geolocation API를 사용해 위치 정보에 동의하면 사용자의 현재 위치에 맞는 날씨 정보를 표시하고, 동의하지 않을 경우 기본 위치로 서울 강남을 설정했습니다.</p>
 
-### `yarn build`
+### 기능 3
+<p>useMutation을 사용하여 input의 change이벤트에 따라 원하는 장소를 검색하고, 해당 장소의 날씨 정보를 조회할 수 있습니다.</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 기능 4
+<p>검색 시 input의 change 이벤트를 통해 데이터를 요청하며, 무분별한 데이터 요청을 방지하기 위해 디바운스 기능을 적용했습니다.</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `yarn eject`
+<!-- Stack Icon Refernces -->
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[js]: /stacks/javascript.svg
+[ts]: /stacks/typescript.svg
+[react]: /stacks/react.svg

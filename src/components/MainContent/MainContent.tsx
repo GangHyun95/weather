@@ -72,11 +72,13 @@ export default function MainContent() {
 
     const [{ data: currentWeather }, { data: forecastData }, { data: city }, {data: airPollution}] = results;
 
-    const isLoading = results[0].isLoading || results[1].isLoading || results[2].isLoading || results[3].isLoading;
+    const isLoading = results.some((result) => result.isLoading);
+    const isError = results.some((result) => result.isError);
 
     if (isLoading || !currentWeather || !forecastData || !city || !airPollution) {
         return <Loading />
     }
+    if (isError) return <div>데이터를 가져오는 중 오류가 발생했습니다.</div>;
 
     return (
         <main>
